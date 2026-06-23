@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoNex Solutions Inc. — 네오넥스솔루션 주식회사</title>
+  <meta name="description" content="소프트웨어 개발, 이주정착 서비스, 생활지원 컨설팅, 부동산 컨설팅 전문 기업 — 네오넥스솔루션 주식회사" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:  #7B2FFF;
+      --blue:    #00AAFF;
+      --grad:    linear-gradient(135deg, #7B2FFF 0%, #00AAFF 100%);
+      --grad-h:  linear-gradient(135deg, #6a1fe8 0%, #0090dd 100%);
+      --dark:    #0D0D1A;
+      --dark2:   #12122A;
+      --mid:     #1C1C3A;
+      --glass:   rgba(255,255,255,0.05);
+      --border:  rgba(255,255,255,0.08);
+      --text:    #E8E8F0;
+      --muted:   #8888AA;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(13,13,26,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo img {
+      height: 52px;
+      display: block;
+      background: rgba(255,255,255,0.92);
+      border-radius: 10px;
+      padding: 4px 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--grad);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(123,47,255,0.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 80% 60%, rgba(0,170,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* subtle grid overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 820px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(0,170,255,0.1);
+      border: 1px solid rgba(0,170,255,0.25);
+      padding: 5px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    h1 .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 auto 44px;
+      font-weight: 400;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    @media (max-width: 860px) {
+      .hero-sub { white-space: normal; }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    .btn-ghost {
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: rgba(123,47,255,0.5); transform: translateY(-2px); }
+
+    /* ── SECTIONS shared ── */
+    section { padding: 96px 5vw; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 1rem;
+      margin-bottom: 56px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-text .section-label { margin-bottom: 12px; }
+    .about-text h2 { margin-bottom: 20px; }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+
+    .stat-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── SERVICES ── */
+    #services { max-width: 1100px; margin: 0 auto; }
+
+    .services-wrap { max-width: 1100px; margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      border-color: rgba(123,47,255,0.4);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── INFO ── */
+    #info {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-wrap { max-width: 1100px; margin: 0 auto; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .info-item {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+
+    .info-item-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .info-item-val {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    /* ── CONTACT ── */
+    #contact { max-width: 700px; margin: 0 auto; text-align: center; }
+
+    .contact-wrap {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 56px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad);
+    }
+
+    .contact-wrap h2 { margin-bottom: 12px; }
+    .contact-wrap p { color: var(--muted); margin-bottom: 36px; font-size: 0.97rem; }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 24px;
+      width: 100%;
+      max-width: 360px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-link:hover {
+      border-color: rgba(123,47,255,0.45);
+      transform: translateY(-2px);
+    }
+
+    .contact-link .icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer img {
+      height: 36px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      padding: 3px 8px;
+    }
+
+    .footer-right {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .nav-links { display: none; }
+      section { padding: 72px 5vw; }
+      .contact-wrap { padding: 40px 24px; }
+      .footer-right { text-align: left; }
+    }
+
+    /* ── SCROLL FADE ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="logo.png" alt="NeoNex Solutions Inc." />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">회사 소개</a></li>
+    <li><a href="#services">서비스</a></li>
+    <li><a href="#info">기업 정보</a></li>
+    <li><a href="#contact" class="nav-cta">문의하기</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">NeoNex Solutions Inc.</span>
+    <h1>연결과 혁신으로<br /><span class="grad-text">새로운 미래</span>를 만듭니다</h1>
+    <p class="hero-sub">소프트웨어 개발부터 이주정착 지원, 부동산 컨설팅까지 — 고객의 새로운 시작을 함께합니다.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">서비스 보기</a>
+      <a href="#contact" class="btn-ghost">문의하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p class="section-label">About Us</p>
+      <h2>네오넥스솔루션<br />주식회사</h2>
+      <p>네오넥스솔루션은 2025년 서울 강남구에 설립된 IT·생활서비스 전문 법인입니다. 소프트웨어 기술력과 생활밀착형 서비스를 결합하여 개인과 기업 고객에게 실질적인 가치를 제공합니다.</p>
+      <p>디지털 혁신과 사람 중심의 서비스를 동시에 추구하며, 고객의 새로운 출발을 기술과 사람으로 지원합니다.</p>
+    </div>
+    <div class="about-stats fade-in">
+      <div class="stat-card">
+        <div class="stat-num">2025</div>
+        <div class="stat-desc">설립 연도</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">강남</div>
+        <div class="stat-desc">테헤란로 소재</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7+</div>
+        <div class="stat-desc">사업 영역</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1억</div>
+        <div class="stat-desc">납입 자본금</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-wrap">
+    <div class="fade-in">
+      <p class="section-label">Services</p>
+      <h2>제공 서비스</h2>
+      <p class="section-desc">기술과 생활을 아우르는 다양한 전문 서비스를 제공합니다.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">💻</div>
+        <h3>소프트웨어 개발 및 운영관리</h3>
+        <p>맞춤형 소프트웨어 개발 및 애플리케이션 퍼블리싱, 유지보수 서비스를 제공합니다.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">✈️</div>
+        <h3>이주정착 서비스</h3>
+        <p>국내외 이주를 준비하는 개인 및 가족을 위한 정착 지원 서비스를 제공합니다.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🤝</div>
+        <h3>생활지원 서비스 및 컨설팅</h3>
+        <p>일상 속 불편함을 해소하는 생활밀착형 서비스와 전문 컨설팅을 제공합니다.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🏢</div>
+        <h3>부동산 컨설팅</h3>
+        <p>부동산 투자·임대·관리에 관한 전문적인 컨설팅 및 중개 지원 서비스를 제공합니다.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🛒</div>
+        <h3>전자상거래 및 통신판매</h3>
+        <p>온라인 플랫폼을 통한 전자상거래 운영 및 통신판매 서비스를 지원합니다.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🏨</div>
+        <h3>일반숙박업 및 건물 임대</h3>
+        <p>주거용·상업용 건물 임대 및 숙박 관련 서비스를 운영합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY INFO -->
+<section id="info">
+  <div class="info-wrap">
+    <div class="fade-in">
+      <p class="section-label">Company Info</p>
+      <h2>기업 정보</h2>
+      <p class="section-desc">네오넥스솔루션 주식회사의 공식 기업 정보입니다.</p>
+    </div>
+    <div class="info-grid fade-in">
+      <div class="info-item">
+        <div class="info-item-label">법인명</div>
+        <div class="info-item-val">네오넥스솔루션 주식회사<br/>NeoNex Solutions Inc.</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">사업자등록번호</div>
+        <div class="info-item-val">421-86-03606</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">대표이사</div>
+        <div class="info-item-val">박수현 (Park, Soo Hyun)</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">설립일</div>
+        <div class="info-item-val">2025년 10월 20일</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">주소</div>
+        <div class="info-item-val">서울특별시 강남구 테헤란로52길 6, 9층 902호<br/>(역삼동, 테헤란로오피스빌딩)</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label">업종</div>
+        <div class="info-item-val">정보통신업 / 소프트웨어 개발 및 관리업</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap fade-in">
+    <p class="section-label">Contact</p>
+    <h2>문의하기</h2>
+    <p>서비스에 대해 궁금하신 점이 있으시면 언제든지 연락 주세요.</p>
+    <div class="contact-links">
+      <a href="tel:07041026832" class="contact-link">
+        <span class="icon">📞</span>
+        070-4102-6832
+      </a>
+      <a href="mailto:neonexinc@naver.com" class="contact-link">
+        <span class="icon">✉️</span>
+        neonexinc@naver.com
+      </a>
+      <a href="https://neonexinc.com" class="contact-link">
+        <span class="icon">🌐</span>
+        www.neonexinc.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo.png" alt="NeoNex Solutions Inc." />
+  <div class="footer-right">
+    <div>© 2025 네오넥스솔루션 주식회사 (NeoNex Solutions Inc.) All rights reserved.</div>
+    <div>사업자등록번호 421-86-03606 | 대표 박수현</div>
+    <div>서울특별시 강남구 테헤란로52길 6, 9층 902호</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
